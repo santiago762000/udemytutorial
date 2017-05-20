@@ -10,16 +10,16 @@
     <md-card-content>
       <div align="center">
         <md-input-container>
-          <input mdInput placeholder="email">
+          <input mdInput placeholder="email" [(ngModel)]="email">
         </md-input-container><br/>
         <md-input-container>
-          <input mdInput placeholder="password" type="password">
+          <input mdInput placeholder="password" type="password" [(ngModel)]="password">
         </md-input-container>
       </div>
     </md-card-content>
     <md-card-actions>
       <div align="center">
-        <button md-button><md-icon>check</md-icon>Done</button>
+        <button md-button (click)='checkEmailPassword()'><md-icon>check</md-icon>Done</button>
       </div>
     </md-card-actions>
   </md-card>

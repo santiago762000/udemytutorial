@@ -2,9 +2,9 @@
   <md-tab label="Search User">
     <div>
       <md-input-container>
-        <input mdInput type="text" placeholder="Username">
+        <input mdInput type="text" placeholder="Username" [(ngModel)]="username">
       </md-input-container>
-      <button md-icon-button>
+      <button md-icon-button (click)="showContents()">
         <md-icon>search</md-icon>
       </button>    
     </div> 
@@ -15,8 +15,8 @@
       </md-select>  
     </div>
     <md-nav-list> 
-      <md-list-item>
-        <span md-line>Some Information</span> 
+      <md-list-item *ngFor="let repo of repoContents">
+        <span md-line>{{repo.name}}</span> 
         <button md-icon-button>
           <md-icon>info</md-icon>
         </button>  

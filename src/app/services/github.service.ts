@@ -10,7 +10,7 @@ export class GithubService {
   }
 
   getRepositories(userName:String){
-    return this.http.get('https://api.github.com/users'+userName+'/repos')
+    return this.http.get('https://api.github.com/users/'+userName+'/repos')
     .map(res=>res.json()).catch(this.showError);
   }
   private showError(error:Response){

@@ -10,12 +10,14 @@ import 'hammerjs';
 import {MdSnackBarModule,MdSelectModule, MdListModule, MdTabsModule, MdInputModule,MdCardModule,MdButtonModule,MdIconModule,MdToolbarModule} from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { OrderByPipe } from './order-by.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    OrderByPipe
   ],
   imports: [
     BrowserModule,

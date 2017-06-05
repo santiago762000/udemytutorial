@@ -12,14 +12,18 @@ import {MdSnackBar} from '@angular/material';
 export class HomeComponent implements OnInit {
 
   username:String;
-  repoContents:Array<Object>=[];
+  repoContents:Array<Object>;
   showSearchBox:Boolean;
+  filterOptions:Array<Object>;
+  selectedFilter:Object;
 
   constructor(private myService:GithubService, private snackBar:MdSnackBar) {
    }
 
   ngOnInit() {
-    this.showSearchBox=true;
+    this.resetAll();
+    this.filterOptions=[{name:"name",value:"name"},{name:"date",value:"pushed_at"}];
+    this.selectedFilter=this.filterOptions[0]
   }
 
   showSnackBar(message:string, action:string){
@@ -35,7 +39,12 @@ export class HomeComponent implements OnInit {
       this.showSnackBar("Not Found", "Connection Error");
       this.showSearchBox=true;
     });
+  }
 
+  resetAll(){
+    this.showSearchBox=true;
+    this.repoContents=[];
+    this.username="";
   }
 
 }

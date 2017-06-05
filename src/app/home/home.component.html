@@ -10,15 +10,18 @@
     </div> 
     <ng-template #filterTemplate>
     <div>
-      <md-select type="string" placeholder="Order by"> 
-        <md-option>option1</md-option>
-        <md-option>option2</md-option>
-      </md-select>  
+      <md-select type="string" placeholder="Order by" [(ngModel)]="selectedFilter">
+          <md-option *ngFor="let option of filterOptions" [value]="option">{{option.name}}</md-option>
+        </md-select>
+      <button md-button (click)="resetAll()">
+          Search Again
+        </button>    
     </div>
     </ng-template>
     <md-nav-list> 
-      <md-list-item *ngFor="let repo of repoContents">
+      <md-list-item *ngFor="let repo of repoContents|orderBy:selectedFilter">
         <span md-line>{{repo.name}}</span> 
+        <span >{{ repo.pushed_at|date: 'dd/MM/yyyy' }}</span>
         <button md-icon-button>
           <md-icon>info</md-icon>
         </button>  

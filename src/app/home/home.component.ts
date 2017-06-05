@@ -13,11 +13,13 @@ export class HomeComponent implements OnInit {
 
   username:String;
   repoContents:Array<Object>=[];
+  showSearchBox:Boolean;
 
   constructor(private myService:GithubService, private snackBar:MdSnackBar) {
    }
 
   ngOnInit() {
+    this.showSearchBox=true;
   }
 
   showSnackBar(message:string, action:string){
@@ -28,8 +30,10 @@ export class HomeComponent implements OnInit {
     this.repoContents=[];
     this.myService.getRepositories(this.username).subscribe(posts=>{
       this.repoContents=posts;
+      this.showSearchBox=false;
     }, err =>{
       this.showSnackBar("Not Found", "Connection Error");
+      this.showSearchBox=true;
     });
 
   }

@@ -7,7 +7,7 @@ import {routing} from './app.routing';
 import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import 'hammerjs';
-import {MdSelectModule, MdListModule, MdTabsModule, MdInputModule,MdCardModule,MdButtonModule,MdIconModule,MdToolbarModule} from '@angular/material';
+import {MdSnackBarModule,MdSelectModule, MdListModule, MdTabsModule, MdInputModule,MdCardModule,MdButtonModule,MdIconModule,MdToolbarModule} from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 
@@ -29,6 +29,7 @@ import { HomeComponent } from './home/home.component';
     MdSelectModule, 
     MdListModule, 
     MdTabsModule,
+    MdSnackBarModule,
     routing
   ],
   providers: [],

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {GithubService} from '../services/github.service';
+import {MdSnackBar} from '@angular/material';
 
 
 @Component({
@@ -13,10 +14,14 @@ export class HomeComponent implements OnInit {
   username:String;
   repoContents:Array<Object>=[];
 
-  constructor(private myService:GithubService) {
+  constructor(private myService:GithubService, private snackBar:MdSnackBar) {
    }
 
   ngOnInit() {
+  }
+
+  showSnackBar(message:string, action:string){
+    this.snackBar.open(message,action,{duration:2000});
   }
 
   showContents(){
@@ -24,7 +29,7 @@ export class HomeComponent implements OnInit {
     this.myService.getRepositories(this.username).subscribe(posts=>{
       this.repoContents=posts;
     }, err =>{
-      //show an error
+      this.showSnackBar("Not Found", "Connection Error");
     });
 
   }

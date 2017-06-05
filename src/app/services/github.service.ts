@@ -14,7 +14,6 @@ export class GithubService {
     .map(res=>res.json()).catch(this.showError);
   }
   private showError(error:Response){
-    alert("error:"+error.json());
     return error.json();
   }
 

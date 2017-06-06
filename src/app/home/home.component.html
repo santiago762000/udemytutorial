@@ -10,9 +10,11 @@
     </div> 
     <ng-template #filterTemplate>
     <div>
-      <md-select type="string" placeholder="Order by"> 
-        <md-option>option1</md-option>
-        <md-option>option2</md-option>
+      <md-select type="string" placeholder="Field" [(ngModel)]="selectedField"> 
+        <md-option *ngFor="let option of fieldOptions" [value]="option">{{option.name}}</md-option>
+      </md-select>  
+      <md-select type="string" placeholder="Order by" [(ngModel)]="selectedOrder"> 
+        <md-option *ngFor="let option of orderOptions" [value]="option">{{option.name}}</md-option>
       </md-select>  
       <button md-button (click)="resetAll()">
         Search Again
@@ -20,7 +22,7 @@
     </div>
     </ng-template>
     <md-nav-list> 
-      <md-list-item *ngFor="let repo of repoContents">
+      <md-list-item *ngFor="let repo of repoContents | orderBy:selectedField:selectedOrder">
         <span md-line>{{repo.name|uppercase}}</span> 
         <span>{{repo.pushed_at| date:'dd/MM/yyyy'}}</span>
         <button md-icon-button>

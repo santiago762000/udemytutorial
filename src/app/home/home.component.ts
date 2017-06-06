@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.showSearchBox=true;
+    this.resetAll();
   }
 
   showSnackBar(message:string, action:string){
@@ -36,6 +36,12 @@ export class HomeComponent implements OnInit {
       this.showSearchBox=true;
     });
 
+  }
+
+  resetAll(){
+    this.showSearchBox=true;
+    this.username="";
+    this.repoContents=[];
   }
 
 }

@@ -14,11 +14,15 @@
         <md-option>option1</md-option>
         <md-option>option2</md-option>
       </md-select>  
+      <button md-button (click)="resetAll()">
+        Search Again
+      </button>  
     </div>
     </ng-template>
     <md-nav-list> 
       <md-list-item *ngFor="let repo of repoContents">
-        <span md-line>{{repo.name}}</span> 
+        <span md-line>{{repo.name|uppercase}}</span> 
+        <span>{{repo.pushed_at| date:'dd/MM/yyyy'}}</span>
         <button md-icon-button>
           <md-icon>info</md-icon>
         </button>  

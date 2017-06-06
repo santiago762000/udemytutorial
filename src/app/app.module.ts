@@ -11,13 +11,17 @@ import {MdSnackBarModule,MdSelectModule, MdListModule, MdTabsModule, MdInputModu
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { OrderByPipe } from './pipes/order-by.pipe';
+import { SearchComponent } from './home/search/search.component';
+import { FavoriteComponent } from './home/favorite/favorite.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    OrderByPipe
+    OrderByPipe,
+    SearchComponent,
+    FavoriteComponent
   ],
   imports: [
     BrowserModule,

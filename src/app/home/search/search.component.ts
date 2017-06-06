@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {GithubService} from '../../services/github.service';
 import {MdSnackBar} from '@angular/material';
+import {CommonDialogComponent} from '../../dialogs/common-dialog/common-dialog.component';
+import {MdDialogRef,MdDialog} from '@angular/material';
 
 @Component({
   selector: 'app-search',
@@ -18,7 +20,8 @@ export class SearchComponent implements OnInit {
   orderOptions:Array<Object>;
   selectedOrder:Object;
 
-  constructor(private myService:GithubService, private snackBar:MdSnackBar) {
+  constructor(private myService:GithubService, private snackBar:MdSnackBar,
+  private dialog:MdDialog) {
    }
 
   ngOnInit() {
@@ -43,6 +46,12 @@ export class SearchComponent implements OnInit {
       this.showSearchBox=true;
     });
 
+  }
+
+  showDialogData(repo){
+    let dialogRef:MdDialogRef<CommonDialogComponent>;
+    dialogRef=this.dialog.open(CommonDialogComponent);
+    dialogRef.componentInstance.htmlUrl=repo.html_url;
   }
 
   resetAll(){

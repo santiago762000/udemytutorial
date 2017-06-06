@@ -23,7 +23,7 @@
       <md-list-item *ngFor="let repo of repoContents | orderBy:selectedField:selectedOrder">
         <span md-line>{{repo.name|uppercase}}</span> 
         <span>{{repo.pushed_at| date:'dd/MM/yyyy'}}</span>
-        <button md-icon-button>
+        <button md-icon-button (click)="showDialogData(repo)">
           <md-icon>info</md-icon>
         </button>  
         <button md-icon-button>

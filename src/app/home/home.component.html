@@ -1,8 +1,8 @@
-<md-tab-group>
+<md-tab-group (selectChange)="updateTab()">
   <md-tab label="Search User">
     <app-search></app-search>
   </md-tab>
   <md-tab label="Favorites">
-      <app-favorite></app-favorite>
+      <app-favorite [favorites]=favoritesFromLocalStorage></app-favorite>
   </md-tab>
 </md-tab-group>

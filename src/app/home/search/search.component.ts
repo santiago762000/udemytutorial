@@ -3,12 +3,13 @@ import {GithubService} from '../../services/github.service';
 import {MdSnackBar} from '@angular/material';
 import {CommonDialogComponent} from '../../dialogs/common-dialog/common-dialog.component';
 import {MdDialogRef,MdDialog} from '@angular/material';
+import {LocalstorageService} from '../../services/localstorage.service';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
-  providers:[GithubService]
+  providers:[GithubService,LocalstorageService]
 })
 export class SearchComponent implements OnInit {
 
@@ -21,7 +22,7 @@ export class SearchComponent implements OnInit {
   selectedOrder:Object;
 
   constructor(private myService:GithubService, private snackBar:MdSnackBar,
-  private dialog:MdDialog) {
+  private dialog:MdDialog, private localStorageService:LocalstorageService) {
    }
 
   ngOnInit() {
@@ -58,6 +59,10 @@ export class SearchComponent implements OnInit {
     this.showSearchBox=true;
     this.username="";
     this.repoContents=[];
+  }
+
+  addToFavorites(repo){
+    this.localStorageService.addObjectToFavorites({name:repo.name, url: repo.html_url});
   }
 
 }

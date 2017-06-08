@@ -1,10 +1,11 @@
 <md-nav-list>
-      <md-list-item>
-        <span md-line>My Repository</span>
-        <a href="#" target="_blank">
+      <md-list-item *ngFor="let favorite of favorites;let i = index;">
+        <span md-line>{{ favorite.name }}</span>
+        <a href={{favorite.url}} target="_blank">
           <md-icon>open_in_new</md-icon>
         </a>
-        <button md-icon>
+        
+        <button md-icon-button>
           <md-icon>delete</md-icon>
         </button>
       </md-list-item>  

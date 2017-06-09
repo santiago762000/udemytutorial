@@ -15,6 +15,8 @@ import { SearchComponent } from './home/search/search.component';
 import { FavoriteComponent } from './home/favorite/favorite.component';
 import { CommonDialogComponent } from './dialogs/common-dialog/common-dialog.component';
 import { ConfirmActionDirective } from './directives/confirm-action.directive';
+import { AUTH_PROVIDERS } from 'angular2-jwt';
+import {Auth0GuardService} from './services/auth0-guard.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,7 @@ import { ConfirmActionDirective } from './directives/confirm-action.directive';
     routing
   ],
   entryComponents:[CommonDialogComponent],
-  providers: [],
+  providers: [Auth0GuardService,AUTH_PROVIDERS],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

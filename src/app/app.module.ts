@@ -14,6 +14,7 @@ import { OrderByPipe } from './pipes/order-by.pipe';
 import { SearchComponent } from './home/search/search.component';
 import { FavoriteComponent } from './home/favorite/favorite.component';
 import { CommonDialogComponent } from './dialogs/common-dialog/common-dialog.component';
+import { ConfirmActionDirective } from './directives/confirm-action.directive';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CommonDialogComponent } from './dialogs/common-dialog/common-dialog.com
     OrderByPipe,
     SearchComponent,
     FavoriteComponent,
-    CommonDialogComponent
+    CommonDialogComponent,
+    ConfirmActionDirective
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,7 @@
         <a href="{{favorite.url}}" target="_blank">
           <md-icon>open_in_new</md-icon>
         </a>
-        <button md-icon-button>
+        <button md-icon-button [appConfirm]="deleteFavoriteRecord.bind(this,i)">
           <md-icon>delete</md-icon>
         </button>
       </md-list-item>  

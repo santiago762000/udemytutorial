@@ -46,7 +46,7 @@ import {Auth0GuardService} from './services/auth0-guard.service';
     routing
   ],
   entryComponents:[CommonDialogComponent],
-  providers: [Auth0GuardService,AUTH_PROVIDERS],
+  providers: [Auth0GuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

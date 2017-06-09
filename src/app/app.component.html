@@ -3,7 +3,7 @@
   <md-toolbar-row>
     <span class="align_to_right"></span>
     <button md-button [routerLink]="['login']"  *ngIf="!auth.isAuthenticated()"><md-icon>account_circle</md-icon>Login</button>
-    <button md-button (click)="auth.logout()"  *ngIf="!auth.isAuthenticated()"><md-icon>account_circle</md-icon>Logout</button>
+    <button md-button (click)="auth.logout()"  *ngIf="auth.isAuthenticated()"><md-icon>account_circle</md-icon>Logout</button>
     
   </md-toolbar-row>  
 </md-toolbar>  

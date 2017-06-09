@@ -9,11 +9,14 @@ export class Auth0GuardService implements CanActivate {
 
 canActivate() {
     // Check to see if a user has a valid JWT
-    if (tokenNotExpired()) {
+    console.log("A")
+    console.log(tokenNotExpired())
+    if (!tokenNotExpired()) {
+      alert("B")
       // If they do, return true and allow the user to load the home component
       return true;
     }
-
+    alert("C")
     // If not, they redirect them to the login page
     this.router.navigate(['/login']);
     return false;

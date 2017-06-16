@@ -19,7 +19,7 @@ export class AuthService {
   constructor(private router: Router) { }
 
   public handleAuthentication(): void {
-    this.auth0.parseHash({ _idTokenVerification: false }, (err, authResult) => {
+    this.auth0.parseHash({ _idTokenVerification: true }, (err, authResult) => {
       if (err) {
         alert(`Error: ${err.errorDescription}`)
       }
@@ -27,6 +27,7 @@ export class AuthService {
         window.location.hash = '';
         localStorage.setItem('access_token', authResult.accessToken);
         localStorage.setItem('id_token', authResult.idToken);
+        console.log(authResult.idToken);
         this.router.navigate(['/home']);
       }
     });

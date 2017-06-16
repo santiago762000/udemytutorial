@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {AccessGuardService} from './../services/access-guard.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   password:String;
   router:Router;
 
-  constructor(private _router:Router) { 
+  constructor(private _router:Router, private accessGuardService:AccessGuardService) { 
     this.router=_router;
   }
 
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
   checkEmailPassword(){
     if(this.email=="chucknorris@gmail.com" && this.password=="idontneedapassword"){
       alert("Success");
+      this.accessGuardService.setAutheticated(true);
       this.router.navigate(['./home']);
     }else{
       alert("Wrong email or password");

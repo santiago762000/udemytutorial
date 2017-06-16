@@ -16,6 +16,8 @@ import { FavoriteComponent } from './home/favorite/favorite.component';
 import { CommonDialogComponent } from './dialogs/common-dialog/common-dialog.component';
 import { ConfirmActionDirective } from './directives/confirm-action.directive';
 
+import {AccessGuardService} from './services/access-guard.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +46,7 @@ import { ConfirmActionDirective } from './directives/confirm-action.directive';
     routing
   ],
   entryComponents:[CommonDialogComponent],
-  providers: [],
+  providers: [AccessGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

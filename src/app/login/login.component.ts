@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {MdSnackBar} from '@angular/material';
 import {AccessGuardService} from './../services/access-guard.service';
 import {ConfigurationService} from './../services/configuration.service';
+
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,10 @@ export class LoginComponent implements OnInit {
   router:Router;
   properties:Object;
 
-  constructor(private _router:Router, private accessGuard:AccessGuardService, private configurationService:ConfigurationService) { 
+  constructor(private _router:Router, 
+  private accessGuard:AccessGuardService, 
+  private configurationService:ConfigurationService, 
+  private snackBar:MdSnackBar) { 
     this.router=_router;
   }
 
@@ -29,7 +34,7 @@ export class LoginComponent implements OnInit {
     this.configurationService.getVariable().subscribe(posts=>{
       this.properties=posts;
     }, err =>{
-      alert("Error");
+      this.showSnackBar("Connection Error", "Please, check your configuration");
     });
   }
 
@@ -46,6 +51,10 @@ export class LoginComponent implements OnInit {
 
   checkConfiguration(){
     alert(this.properties["domain"]);
+  }
+
+  showSnackBar(message:string, action:string){
+    this.snackBar.open(message,action,{duration:2000});
   }
 
 }

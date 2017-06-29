@@ -13,6 +13,8 @@ const appRoutes:Routes=[
         path:'home',
         component:HomeComponent,
         canActivate:[AccessGuardService]
-    }
+    },
+    { path: '**',     
+    component: LoginComponent }
 ];
 export const routing:ModuleWithProviders=RouterModule.forRoot(appRoutes);

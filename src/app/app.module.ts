@@ -16,7 +16,11 @@ import { FavoriteComponent } from './home/favorite/favorite.component';
 import { CommonDialogComponent } from './dialogs/common-dialog/common-dialog.component';
 import { ConfirmActionDirective } from './directives/confirm-action.directive';
 
+import {ConfigurationService} from './services/configuration.service';
+
 import {AccessGuardService} from './services/access-guard.service';
+import { AUTH_PROVIDERS } from 'angular2-jwt';
+
 
 @NgModule({
   declarations: [
@@ -46,7 +50,7 @@ import {AccessGuardService} from './services/access-guard.service';
     routing
   ],
   entryComponents:[CommonDialogComponent],
-  providers: [AccessGuardService],
+  providers: [AccessGuardService,ConfigurationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

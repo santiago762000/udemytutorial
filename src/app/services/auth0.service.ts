@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
 import { Router } from '@angular/router';
 import { ConfigurationService } from './../services/configuration.service';
+import {MdSnackBar} from '@angular/material';
 
 
 declare var auth0: any;
@@ -11,27 +12,25 @@ export class Auth0Service {
 
   auth0: any;
 
-  constructor(private router: Router, private ConfigurationService: ConfigurationService) {
-    this.ConfigurationService.getVariables().subscribe(posts => {
+  constructor(private router: Router, private ConfigurationService: ConfigurationService, private snackBar:MdSnackBar) {
+    this.ConfigurationService.getVariables().subscribe(properties => {
 
       this.auth0 = new auth0.WebAuth({
-        domain: posts.domain,
-        clientID: posts.clientId,
-        // specify your desired callback URL
-        redirectUri: 'http://localhost:4200',
-        responseType: 'token id_token'
+        domain: properties.domain,
+        clientID: properties.clientId,
+        redirectUri: properties.redirectUrl
+        
       });
 
 
     }, err => {
-      //this.showSnackBar("Connection Error","Please, check your configuration");
+      this.showSnackBar("Connection Error","Please, check your configuration");
     })
-
-
-
   }
 
-
+  showSnackBar(message:string, action:string){
+    this.snackBar.open(message,action,{duration:2000});
+  }
 
   public login(username: string, password: string): void {
     this.auth0.client.login({
@@ -40,7 +39,9 @@ export class Auth0Service {
       password,
       scope: 'openid profile',
     }, (err, authResult) => {
-      if (err) return alert(err.description);
+      if (err) {
+        return this.showSnackBar("Connection Error","Please, check your credentials");
+      }
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         localStorage.setItem('access_token', authResult.accessToken);

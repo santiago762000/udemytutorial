@@ -19,7 +19,6 @@ import { ConfirmActionDirective } from './directives/confirm-action.directive';
 import {ConfigurationService} from './services/configuration.service';
 
 import {AccessGuardService} from './services/access-guard.service';
-import { AUTH_PROVIDERS } from 'angular2-jwt';
 
 
 @NgModule({

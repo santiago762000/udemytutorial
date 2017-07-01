@@ -1,5 +1,5 @@
 {
-    "domain":"tutorialudemy.auth01.com",
+    "domain":"tutorialudemy.auth0.com",
     "clientId":"XRHfaD8MSjL3I45Gzs9bwLk5ycrg5qYF",
     "redirectUrl":"http://localhost:4200"
 }

@@ -10,12 +10,12 @@ declare var auth0: any;
 @Injectable()
 export class Auth0Service {
 
-  auth0: any;
+  webAuth: any;
 
   constructor(private router: Router, private ConfigurationService: ConfigurationService, private snackBar:MdSnackBar) {
     this.ConfigurationService.getVariables().subscribe(properties => {
 
-      this.auth0 = new auth0.WebAuth({
+      this.webAuth = new auth0.WebAuth({
         domain: properties.domain,
         clientID: properties.clientId,
         redirectUri: properties.redirectUrl
@@ -33,7 +33,7 @@ export class Auth0Service {
   }
 
   public login(username: string, password: string): void {
-    this.auth0.client.login({
+    this.webAuth.client.login({
       realm: 'Username-Password-Authentication',
       username,
       password,

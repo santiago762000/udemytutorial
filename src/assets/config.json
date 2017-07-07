@@ -1,4 +1,5 @@
 {
-    "domain":"",
-    "clientId":""
+    "domain":"tutorialudemy.auth0.com",
+    "clientId":"XRHfaD8MSjL3I45Gzs9bwLk5ycrg5qYF",
+    "redirectUri":"http://localhost:4200"
 }

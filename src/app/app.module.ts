@@ -17,6 +17,7 @@ import { CommonDialogComponent } from './dialogs/common-dialog/common-dialog.com
 import { ConfirmActionDirective } from './directives/confirm-action.directive';
 
 import {AccessGuardService} from './services/access-guard.service';
+import {ConfigurationService} from  './services/configuration.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import {AccessGuardService} from './services/access-guard.service';
     routing
   ],
   entryComponents:[CommonDialogComponent],
-  providers: [AccessGuardService],
+  providers: [AccessGuardService,ConfigurationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
